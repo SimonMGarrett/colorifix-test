@@ -1,0 +1,28 @@
+Backend specifications:
+
+✔ Implemented in Python. @done(21-03-07 00:38)
+✔ Enable communication with a front end using websockets protocol. @done(21-03-07 00:38)
+✔ Should read the form specifications from a json file (see Sample Data below). @done(21-03-07 00:38)
+✔ Backend should handle two types of messages from the frontend: @done(21-03-07 01:15)
+    ✔ `get_form_name => form_names:list`  that should return names of all available forms. @done(21-03-07 00:38)
+    ✔ `get_form_specs(name:str) => form_spec:json`  Where `name` argument is a name of the form and `form_spec` is the requested from specification. @done(21-03-07 00:38)
+    ✔ `submit_from(name: str, data: json)` Where `name` argument is a name of the form submitted and `data` is a dictionary where the keys are names of the form parameters and values are parameter values submitted by the user. @done(21-03-07 01:15)
+
+Frontend specification:
+
+✔ Implemented in Vue.js. @done(21-03-07 00:38)
+✔ Should get names of all available forms using `get_form_name` and present them to the user. @done(21-03-07 00:38)
+✔ Upon form selection by a user, should get form specification by sending a `get_form_specs` message to the server and render the form according to the received specifications. @done(21-03-07 00:38)
+✔ Should allow users to fill in and submit the form. @done(21-03-07 01:15)
+✔ Perform validation checks @done(21-03-07 20:04)
+✔ Make sure all required fields are filled in. @done(21-03-07 20:04)
+✔ On form submission, should send a `submit_form` message to the server specifying the name of the form and gathered parameter values. @done(21-03-07 01:15)
+
+Features (in order of priority):
+
+✔ It should be possible to access and submit all the available forms. @done(21-03-07 01:15)
+✔ Each form should display its `name` and `description`. @done(21-03-07 00:38)
+✔ For each parameter, the form should have an input field with a label corresponding to the `label` field in the database. @done(21-03-07 00:38)
+✔ The form input elements should allow any characters for  `string`-type parameters and only numbers for  `number`-type parameters. Parameters of the type `select` should be represented as drop-downs with options specified in the `options` field. Parameters of the type `bool` should be represented as bi-stable components (e.g. checkbox). @done(21-03-07 20:22)
+✔ The homepage should have some sort of search/navigation to all possible forms to fill in. @done(21-03-07 00:38)
+✔ New form specifications may be added to the file during the run time. Make sure they are accessible without having to restart the web service @done(21-03-07 00:38)

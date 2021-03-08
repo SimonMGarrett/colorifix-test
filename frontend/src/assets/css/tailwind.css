@@ -1,0 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foo-width: 100px;
+  --foo-bg-color: rgba(255, 0, 0, 0.85);
+}
+
+html,
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+h1 {
+  font-size: 3.375rem;
+  margin: 5rem 0 3.375rem 0;
+  font-weight: 900;
+}
+
+h2 {
+  font-size: 2.25rem;
+  margin: 3.375rem 0 2.25rem 0;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin: 2.25rem 0 1.5rem 0;
+  font-weight: 600;
+}
+
+h4 {
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 1.5rem 0 1rem 0;
+  text-transform: uppercase;
+}
+
+/* Forms */
+
+button {
+  @apply text-white font-semibold rounded px-3 py-2;
+  border: none;
+  background-color: #f2296c;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease-in-out;
+}
+
+button:hover {
+  opacity: 1;
+}
+
+input {
+  @apply border border-gray-800 text-gray-800 rounded px-3 py-2 inline-block;
+}
+
+select {
+  @apply border border-gray-800 text-gray-800 rounded px-3 py-2 inline-block;
+}
+
+label {
+  @apply font-bold text-right px-3 py-2 inline-block;
+}
+
+a {
+  color: #27cc8b;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Element rules */
+
+.no-top {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.form-card {
+  transform: scale(1, 1);
+  transition: transform 0.3s ease-in-out;
+}
+.form-card:hover {
+  transform: scale(1.04, 1.04);
+}
+
+.form-card__form {
+  opacity: 0;
+  transform: scale(1, 0);
+  max-height: 0;
+  transition: opacity 0.3s ease-in-out, tranform 0.3s ease-in-out;
+}
+.form-card__form.active {
+  opacity: 1;
+  transform: scale(1, 1);
+  max-height: 500px;
+}

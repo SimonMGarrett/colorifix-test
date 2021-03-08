@@ -1,0 +1,107 @@
+{
+  "parameter_types":[
+    "string",
+    "number",
+    "bool",
+    "select"
+  ],
+  "forms": [
+    {
+      "label": "Register new pigment",
+      "name": "request_colour",
+      "description": "Record discovery of a new pigment",
+      "parameters":[
+        {
+          "name": "pigment_name",
+          "label": "Pigment name",
+          "type": "string",
+          "required": "true"
+        },
+        {
+          "name": "origin",
+          "label": "Organism of origin",
+          "type": "string",
+          "required": "true"
+        },
+        {
+          "name": "available",
+          "label": "Genome is available?",
+          "type": "bool",
+          "required": "true"
+        }
+      ]
+    },
+    {
+      "label": "Register a dye round",
+      "name": "request_dyeing",
+      "description": "Send a new dyeing request to the dyeing team",
+      "parameters":[
+        {
+          "name": "colour",
+          "label": "Colour used",
+          "type": "select",
+          "required": "true",
+          "options":[
+            "Flamingo Pink",
+            "Golden Yellow",
+            "Swamp Green",
+            "Cosmic Blue"
+          ]
+        },
+        {
+          "name": "fabric",
+          "label": "Fabric used",
+          "type": "select",
+          "required": "true",
+          "options":[
+            "Cotton",
+            "Polyester",
+            "Wool",
+            "Silk"
+          ]
+        },
+        {
+          "name": "duration",
+          "label": "Duration of the dye round (min)",
+          "type": "number",
+          "required": "false"
+        }
+      ]
+    },
+    {
+      "label": "Request doughnuts",
+      "name": "request_doughnuts",
+      "description": "Send a new doughnut request to the CEO",
+      "parameters":[
+        {
+          "name": "make",
+          "label": "Make of doughnut",
+          "type": "select",
+          "required": "true",
+          "options":[
+            "Krispy Kreme",
+            "Greggs"
+          ]
+        },
+        {
+          "name": "number",
+          "label": "Number of doughnuts",
+          "type": "select",
+          "required": "true",
+          "options":[
+            "1 doughnut",
+            "3 doughnuts",
+            "box of 6",
+            "box of 12"
+          ]
+        },
+        {
+          "name": "cuppa",
+          "label": "Include a cuppa?",
+          "type": "bool",
+          "required": "false"
+        }
+      ]
+    }
+  ]
+}

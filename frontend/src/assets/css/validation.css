@@ -1,0 +1,53 @@
+/* Validation */
+.errors {
+  @apply border-red-800;
+  @apply !important bg-red-100;
+
+  border-top: transparent;
+  border-right: transparent;
+  border-bottom: transparent;
+}
+
+.valid {
+  @apply border-green-700;
+  @apply !important bg-green-100;
+
+  border-top: transparent;
+  border-right: transparent;
+  border-bottom: transparent;
+}
+
+input:-internal-autofill-selected.valid {
+  background-color: #f0fff4 !important;
+}
+
+.valid ~ label::after {
+  @apply absolute z-10 right-0 block m-0 p-0 w-4 h-4 text-green-700;
+
+  transform: translate(1rem, -26px) scale(1, 1);
+  transform-origin: left;
+  content: '✓';
+}
+
+.filled-in {
+  @apply bg-white border-gray-200;
+}
+
+/* Disable autofill highlighting on Chrome and Safari etc */
+input:-webkit-autofill {
+  --text-input-color: theme('colors.gray.900');
+  --page-background-color: #fff;
+
+  -webkit-text-fill-color: var(--text-input-color) !important;
+  -webkit-box-shadow: 0 0 0 1rem var(--page-background-color) inset !important;
+  background-clip: content-box !important;
+}
+
+input:-webkit-autofill.valid {
+  --text-input-color: theme('colors.gray.900');
+  --page-background-color: #f0fff4;
+
+  -webkit-text-fill-color: var(--text-input-color) !important;
+  -webkit-box-shadow: 0 0 0 1rem var(--page-background-color) inset !important;
+  background-clip: content-box !important;
+}
