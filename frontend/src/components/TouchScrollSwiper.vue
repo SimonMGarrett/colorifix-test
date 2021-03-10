@@ -97,7 +97,7 @@ export default {
       const widthOfSlide = chosenCard.clientWidth;
       console.log('widthOfScroller', widthOfScroller); // eslint-disable-line no-console
       const offsetCentreSlide = chosenCard.offsetLeft + widthOfSlide / 2;
-      const offsetLeft = -8 + offsetCentreSlide - widthOfScroller / 2;
+      const offsetLeft = 17 + offsetCentreSlide - widthOfScroller / 2;
       console.log('-- scroll to slide', num, offsetLeft); // eslint-disable-line no-console
       this.scrollMeTo(offsetLeft);
 
