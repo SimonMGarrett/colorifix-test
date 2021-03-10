@@ -34,7 +34,6 @@ export default {
   },
 
   mounted() {
-    console.log('MOUNTED'); // eslint-disable-line no-console
     this.recheckSlides();
   },
 
@@ -43,14 +42,13 @@ export default {
       const slides = Array.from(
         document.querySelectorAll('.scrolling-wrapper-flexbox .swiper-card')
       );
-      console.log('-- SLIDES', slides); // eslint-disable-line no-console
+      // console.log('-- SLIDES', slides); // eslint-disable-line no-console
       slides.forEach(slide => {
-        console.log('setting event'); // eslint-disable-line no-console
         slide.onclick = this.scrollToSlide;
       });
     },
     scroll(amount) {
-      console.log('... scrolling by', amount); // eslint-disable-line no-console
+      // console.log('... scrolling by', amount); // eslint-disable-line no-console
       const elem = document.querySelector('.scrolling-wrapper-flexbox');
       if (elem.scrollTo) {
         elem.scrollTo({
@@ -63,7 +61,7 @@ export default {
       }
     },
     scrollMeTo(pos) {
-      console.log('... scrolling to', pos); // eslint-disable-line no-console
+      // console.log('... scrolling to', pos); // eslint-disable-line no-console
       const elem = document.querySelector('.scrolling-wrapper-flexbox');
       if (elem.scrollTo) {
         elem.scrollTo({
@@ -90,15 +88,12 @@ export default {
       this.scroll(amount);
     },
     scrollToSlide(evt) {
-      console.log('evt *', evt); // eslint-disable-line no-console
       const chosenCard = evt.target.closest('.swiper-card');
       const num = parseInt($(chosenCard).data('slider-card-indx'), 10);
       const widthOfScroller = this.$el.clientWidth;
       const widthOfSlide = chosenCard.clientWidth;
-      console.log('widthOfScroller', widthOfScroller); // eslint-disable-line no-console
       const offsetCentreSlide = chosenCard.offsetLeft + widthOfSlide / 2;
       const offsetLeft = 17 + offsetCentreSlide - widthOfScroller / 2;
-      console.log('-- scroll to slide', num, offsetLeft); // eslint-disable-line no-console
       this.scrollMeTo(offsetLeft);
 
       // Remove active from all, add to new active
