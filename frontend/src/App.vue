@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="p-8 md:px-16">
+  <div id="app" class="p-8 md:px-16 w-full">
     <svg
       data-cy="top-logo"
       width="151px"
