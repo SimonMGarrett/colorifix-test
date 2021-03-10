@@ -115,7 +115,7 @@ the tests. See [Cypress](https://www.cypress.io/) for more information on how Cy
 - See the TODO file for a checklist of all features in the project spec. I think they're all covered. In any case, I'm
   out of time(!), having taken just over 7hrs to do this (I think you suggested 5hrs was what I should spend?)
 
-- As you'll probably have seen, I had issues getting Poetry up and running. I think it was getting confused with the
+- As you'll probably have seen, I had issues getting Poetry up and running. I think Poetry was getting confused with the
   three versions of Python I have on my machine (2.7, 3.7 and 3.9). I could have got it working, but this coding test
   wasn't about that so I focussed on getting to the goal instead.
 
