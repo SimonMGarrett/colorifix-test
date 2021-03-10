@@ -3,28 +3,17 @@
     <h1>Experimental Progress</h1>
     <h2 class="">Choose the form to fill in:</h2>
 
-    <div class="scrolling-container w-full">
-      <div
-        ref="formSwiper"
-        class="scrolling-wrapper-flexbox flex flex-nowrap overflow-auto form-swiper border-t border-b border-gray-200 w-full py-2 my-4"
-      >
-        <div
-          v-for="(cardData, indx) in allForms"
-          :key="indx"
-          class="form-card-outer flex-grow-0 flex-shrink-0 w-full md:w-3/5 lg:w-3/5 xl:w-2/5 p-0 m-0"
-        >
-          <form-card
-            :card-data="cardData"
-            :websocket="websocket"
-            :slide-number="indx"
-            :form-parameters="formParameters"
-          />
-        </div>
-      </div>
-
-      <div class="scroll scroll-left" @click="scrollLeft()">&lt;</div>
-      <div class="scroll scroll-right" @click="scrollRight()">&gt;</div>
-    </div>
+    <touch-scroll-swiper ref="ts-swiper">
+      <form-card
+        v-for="(cardData, indx) in allForms"
+        :key="indx"
+        class="swiper-card flex-grow-0 flex-shrink-0 w-full md:w-3/5 lg:w-3/5 xl:w-2/5"
+        :card-data="cardData"
+        :websocket="websocket"
+        :slide-number="indx"
+        :form-parameters="formParameters"
+      />
+    </touch-scroll-swiper>
 
     <button class="mr-2 mb-2" @click="requestAllForms()" type="button">
       Refresh forms
@@ -34,12 +23,14 @@
 
 <script>
 import FormCard from '@/components/FormCard.vue';
+import TouchScrollSwiper from '../components/TouchScrollSwiper.vue';
 
 export default {
   name: 'Home',
 
   components: {
     FormCard,
+    TouchScrollSwiper,
   },
 
   /**
@@ -123,73 +114,12 @@ export default {
           description: f.description,
         });
       });
-    },
 
-    scroll(amount) {
-      const elem = document.querySelector('.scrolling-wrapper-flexbox');
-      if (elem.scrollTo) {
-        elem.scrollTo({
-          top: 0,
-          left: elem.scrollLeft + amount,
-          behavior: 'smooth',
-        });
-      } else {
-        elem.scrollLeft += amount;
-      }
-    },
-    scrollLeft() {
-      const amount =
-        Array.from(document.querySelectorAll('.form-card'))[0].clientWidth + 32;
-      this.scroll(-amount);
-    },
-    scrollRight() {
-      const amount =
-        Array.from(document.querySelectorAll('.form-card'))[0].clientWidth + 32;
-      this.scroll(amount);
+      const innerthis = this;
+      this.$nextTick(() => {
+        innerthis.$refs['ts-swiper'].recheckSlides();
+      });
     },
   },
 };
 </script>
-
-<style>
-.scrolling-container {
-  position: relative;
-}
-/* Little adjustments for our horizontal slider */
-.scrolling-wrapper-flexbox {
-  position: relative;
-  -webkit-overflow-scrolling: touch;
-}
-.scrolling-wrapper-flexbox::-webkit-scrollbar {
-  display: none;
-}
-
-.form-card-outer {
-  position: relative;
-}
-
-.scroll {
-  position: absolute;
-  height: 32px;
-  width: 32px;
-  top: calc(50% - 16px);
-  font-size: 22px;
-  opacity: 0.5;
-  border-radius: 100%;
-  color: white;
-  background-color: rgba(128, 128, 128, 0.8);
-  text-align: center;
-  cursor: pointer;
-  font-family: 'Courier New', Courier, monospace;
-  font-weight: bold;
-}
-.scroll:hover {
-  opacity: 0.8;
-}
-.scroll-left {
-  left: -12px;
-}
-.scroll-right {
-  right: -12px;
-}
-</style>

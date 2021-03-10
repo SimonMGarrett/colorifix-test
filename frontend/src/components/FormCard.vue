@@ -1,7 +1,8 @@
 <template>
   <div
     :id="`form-card-${slideNumber}`"
-    class="form-card p-4 m-4 border border-gray-100 rounded shadow-lg cursor-pointer"
+    class="form-card self-start border border-gray-100 rounded shadow-lg cursor-pointer p-4 mx-4"
+    :data-slider-card-indx="slideNumber"
     @click="requestGivenForm()"
   >
     <div class="form-card__form-id text-gray-300 p-0 m-0">
@@ -155,6 +156,10 @@ export default {
       // Hide all forms
       $('.form-card__form').each((indx, elem) => {
         $(elem).removeClass('active');
+        // wait for the form to disappear after removal of 'active' class
+        // setTimeout(() => {
+        //   $(elem).css('maxHeight', '0px');
+        // }, 350);
       });
 
       // Request data for for
@@ -172,7 +177,9 @@ export default {
      * Show only this form (the view will construct it from it's parameters).
      */
     showForm() {
+      // Chosen form is is exact component instance
       const chosenForm = this.$el.querySelector('.form-card__form');
+      // chosenForm.style.maxHeight = '500px';
 
       // Show only this form
       chosenForm.classList.add('active');
@@ -220,3 +227,26 @@ export default {
   },
 };
 </script>
+
+<style>
+.form-card {
+  transform: scale(1, 1);
+  transition: transform 0.3s ease-in-out;
+}
+.form-card:hover {
+  transform: scale(1.04, 1.04);
+}
+
+.form-card__form {
+  opacity: 0;
+  transform: scale(1, 0);
+  max-height: 0;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  overflow: hidden;
+}
+.form-card__form.active {
+  opacity: 1;
+  transform: scale(1, 1);
+  max-height: 500px;
+}
+</style>
