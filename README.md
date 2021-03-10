@@ -22,16 +22,16 @@ To run the tests:
 
 1. Install everything with:
 
-`cd frontend` > `npm install` (The Vue CLI installer used NPM, so I'm sticking with it.)
+`cd frontend && npm install` (The Vue CLI installer used NPM, so I'm sticking with it.)
 
 2a. Compiling and hot-reloading for development:
 
-`yarn serve` - this will start on port 3088, which is important so I know where to point Cypress to run the end-to-end
-tests.
+`npm run serve` or `yarn serve` - this will start on port 3088, which is important so we know where to point Cypress to
+run the end-to-end tests.
 
 2b. Compiling and minification for production:
 
-`yarn build` (not that you'll need to)
+`npm run build` or `yarn build` (not that you'll need to)
 
 3. Running the tests:
 
