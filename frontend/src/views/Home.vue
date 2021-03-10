@@ -22,8 +22,8 @@
         </div>
       </div>
 
-      <div class="scroll scroll-left" @click="scroll(-320)">&lt;</div>
-      <div class="scroll scroll-right" @click="scroll(320)">&gt;</div>
+      <div class="scroll scroll-left" @click="scrollLeft()">&lt;</div>
+      <div class="scroll scroll-right" @click="scrollRight()">&gt;</div>
     </div>
 
     <button class="mr-2 mb-2" @click="requestAllForms()" type="button">
@@ -136,6 +136,16 @@ export default {
       } else {
         elem.scrollLeft += amount;
       }
+    },
+    scrollLeft() {
+      const amount =
+        Array.from(document.querySelectorAll('.form-card'))[0].clientWidth + 32;
+      this.scroll(-amount);
+    },
+    scrollRight() {
+      const amount =
+        Array.from(document.querySelectorAll('.form-card'))[0].clientWidth + 32;
+      this.scroll(amount);
     },
   },
 };
