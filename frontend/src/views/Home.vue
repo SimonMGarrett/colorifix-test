@@ -7,7 +7,7 @@
       <form-card
         v-for="(cardData, indx) in allForms"
         :key="indx"
-        class="swiper-card flex-grow-0 flex-shrink-0 w-full md:w-3/5 lg:w-3/5 xl:w-2/5"
+        class="swiper-card flex-grow-0 flex-shrink-0 w-11/12 md:w-3/5 lg:w-3/5 xl:w-2/5"
         :card-data="cardData"
         :websocket="websocket"
         :slide-number="indx"

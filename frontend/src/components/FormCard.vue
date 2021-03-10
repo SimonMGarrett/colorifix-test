@@ -156,10 +156,6 @@ export default {
       // Hide all forms
       $('.form-card__form').each((indx, elem) => {
         $(elem).removeClass('active');
-        // wait for the form to disappear after removal of 'active' class
-        // setTimeout(() => {
-        //   $(elem).css('maxHeight', '0px');
-        // }, 350);
       });
 
       // Request data for for
@@ -179,7 +175,6 @@ export default {
     showForm() {
       // Chosen form is is exact component instance
       const chosenForm = this.$el.querySelector('.form-card__form');
-      // chosenForm.style.maxHeight = '500px';
 
       // Show only this form
       chosenForm.classList.add('active');
